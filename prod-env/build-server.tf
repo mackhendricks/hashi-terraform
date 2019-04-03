@@ -1,6 +1,6 @@
 variable "do_token" {}
 variable "dropletname" {
-    default="imagebuilder"
+    default="build-server"
 }
 
 variable "number_of_servers" {}
