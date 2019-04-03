@@ -16,7 +16,7 @@ data "digitalocean_ssh_key" "jump" {
   name = "Jump"
 }
 
-resource "digitalocean_droplet" "dsiprouterDroplet" {
+resource "digitalocean_droplet" "build-server" {
         name = "${var.dropletname}-${count.index}"
         count = "${var.number_of_servers}"
         region = "nyc1"
@@ -27,5 +27,5 @@ resource "digitalocean_droplet" "dsiprouterDroplet" {
 }
 
 output "ip" {
-  value = "${digitalocean_droplet.dsiprouterDroplet.*.ipv4_address}"
+  value = "${digitalocean_droplet.build-server.*.ipv4_address}"
 }
