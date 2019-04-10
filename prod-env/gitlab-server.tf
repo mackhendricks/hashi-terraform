@@ -18,7 +18,7 @@ data "digitalocean_ssh_key" "jump" {
   name = "Jump"
 }
 
-resource "digitalocean_droplet" "build-server" {
+resource "digitalocean_droplet" "gitlab-server" {
         name = "${var.dropletname}-${count.index}"
         count = "${var.number_of_servers}"
         region = "nyc1"
@@ -29,5 +29,5 @@ resource "digitalocean_droplet" "build-server" {
 }
 
 output "ip" {
-  value = "${digitalocean_droplet.build-server.*.ipv4_address}"
+  value = "${digitalocean_droplet.gitlab-server.*.ipv4_address}"
 }
