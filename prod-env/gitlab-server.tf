@@ -7,16 +7,6 @@ variable "gitlab_number_of_servers" {
 }
 
 
-provider "digitalocean" {
-        token = "${var.do_token}"
-}
-
-
-
-data "digitalocean_ssh_key" "jump" {
-  name = "Jump"
-}
-
 resource "digitalocean_droplet" "gitlab_server" {
         name = "${var.gitlab_hostname}-${count.index}"
         count = "${var.gitlab_number_of_servers}"
